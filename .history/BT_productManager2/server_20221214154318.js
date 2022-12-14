@@ -2,8 +2,11 @@ const http = require('http')
 const fs = require('fs')
 
 let server = http.createServer(function (req, res) {
+    // đọc dữ liệu từ file data.txt
     let dataFile = '';
     let html = '';
+
+
     fs.readFile('./data/data.json','utf8', function (err, str) {
         dataFile = JSON.parse(str);
         dataFile.forEach((value) => {
@@ -17,7 +20,7 @@ let server = http.createServer(function (req, res) {
         });
     });
 
-    fs.readFile('./templates/index.html','utf8', function(err, data) {
+    fs.readFile('./templates/display.html','utf8', function(err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         data = data.replace('{list-user}', html)
         res.write(data)
