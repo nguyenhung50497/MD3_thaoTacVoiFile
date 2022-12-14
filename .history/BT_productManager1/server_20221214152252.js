@@ -2,7 +2,6 @@ const http = require('http')
 const fs = require('fs')
 
 let server = http.createServer(function (req, res) {
-    // đọc dữ liệu từ file data.txt
     let dataFile = '';
     let html = '';
     fs.readFile('./data/data.txt','utf8', function (err, str) {

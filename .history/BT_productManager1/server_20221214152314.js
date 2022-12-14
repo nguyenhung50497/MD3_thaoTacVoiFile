@@ -5,7 +5,7 @@ let server = http.createServer(function (req, res) {
     // đọc dữ liệu từ file data.txt
     let dataFile = '';
     let html = '';
-    fs.readFile('./data/data.txt','utf8', function (err, str) {
+    fs.readFile('./data/data.json','utf8', function (err, str) {
         dataFile = str.split(",")
         console.log(str);
         dataFile.forEach((value, index) => {

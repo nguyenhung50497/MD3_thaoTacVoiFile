@@ -7,7 +7,7 @@ let server = http.createServer(function (req, res) {
     let html = '';
     fs.readFile('./data/data.txt','utf8', function (err, str) {
         dataFile = str.split(",")
-        console.log(str);
+        log
         dataFile.forEach((value, index) => {
             html += '<tr>';
             html += `<td>${index + 1}</td>`
