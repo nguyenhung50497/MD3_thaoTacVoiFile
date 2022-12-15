@@ -8,6 +8,7 @@ if (list.length > 0) {
     dataFile = JSON.parse(list);
 }
 let str = '';
+console.log(dataFile);
 dataFile.forEach((value) => {
     str += '<tr>';
     str += `<td>${value.id}</td>`

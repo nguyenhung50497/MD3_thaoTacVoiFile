@@ -8,6 +8,7 @@ if (list.length > 0) {
     dataFile = JSON.parse(list);
 }
 let str = '';
+console.log(dataFile);
 dataFile.forEach((value) => {
     str += '<tr>';
     str += `<td>${value.id}</td>`
@@ -21,6 +22,8 @@ let server = http.createServer(function (req, res) {
     let methodRequest = req.method;
     if (methodRequest === 'GET') {
         fs.readFile('./templates/addProduct.html','utf8', (err, data) => {
+            
+
             res.writeHead(200, {'Content-Type': 'text/html'});
             data = data.replace('{list-product}', str)
             res.write(data);
@@ -41,14 +44,18 @@ let server = http.createServer(function (req, res) {
                 }
                 res.end();
             })
-           
+            
+            let str = '';
+            console.log(dataFile);
+            dataFile.forEach((value) => {
                 str += '<tr>';
-                str += `<td>${newData.id}</td>`
-                str += `<td>${newData.name}</td>`
-                str += `<td>${newData.price}</td>`
+                str += `<td>${value.id}</td>`
+                str += `<td>${value.name}</td>`
+                str += `<td>${value.price}</td>`
                 str += `<td><button class="btn btn-danger">Delete</button></td>`
                 str += `<td><button class="btn btn-primary">Update</button></td>`
                 str += '</tr>';
+            });
                 
             let html = fs.readFileSync('./templates/addProduct.html','utf8')
                 res.writeHead(200, {'Content-Type': 'text/html'});

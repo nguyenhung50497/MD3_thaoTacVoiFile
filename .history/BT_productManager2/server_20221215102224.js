@@ -8,6 +8,7 @@ if (list.length > 0) {
     dataFile = JSON.parse(list);
 }
 let str = '';
+console.log(dataFile);
 dataFile.forEach((value) => {
     str += '<tr>';
     str += `<td>${value.id}</td>`
@@ -49,6 +50,7 @@ let server = http.createServer(function (req, res) {
                 str += `<td><button class="btn btn-danger">Delete</button></td>`
                 str += `<td><button class="btn btn-primary">Update</button></td>`
                 str += '</tr>';
+            
                 
             let html = fs.readFileSync('./templates/addProduct.html','utf8')
                 res.writeHead(200, {'Content-Type': 'text/html'});
